@@ -8,6 +8,7 @@ concept Number = std::is_integral_v<T> || std::is_floating_point_v<T>;
 
 template<class F, class M, class N>
 concept calculate_callable = requires(F&& f, M m, N n){
+    requires Number<M> && Number<N>;
     {std::forward<F>(f)(m, n)};
 };
 
